@@ -7,6 +7,50 @@ O versionamento segue [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+v16.0.0 — Modo Asana, modo Boletos, vencimento no título e correções
+
+Adicionado:
+- Modo "Asana" (📋): card minimal com NF+distribuidor (3 botões de cópia),
+  valor da NF, data de emissão, lista de boletos e cópia em lote dos nomes
+- Modo "Boletos" (📅): lista focada em vencimentos com dias até o vencimento
+  calculados a partir da data do computador; cores por urgência
+- Pill de vencimento no título (todos os modos): menor data de vencimento
+  com cor por urgência (verde/amarelo/vermelho)
+
+Corrigido:
+- Fechar NF-e → re-upload marcava como duplicada (agora splice de nfes)
+- `\n` literal ou real em nomes de produtos ao copiar (safeCopyLine em todos
+  os data-copy; parser sanitiza também cProd, ncm, cest, cfop)
+- Toast "1 produtos" → "1 produto"
+- Minimized set persiste após close (limpo no close)
+- `data-copy` com caracteres de controle
+
+Interno:
+- `safeCopyLine` remove `\\n`, `\\r`, `\\t` literais e `\n`, `\r`, `\t` reais
+- Análise de bugs registrada em comentário (v17 se necessário):
+  * Estado de <details> reseta a cada render (requer state per-NF-e)
+  * `chave` vazia causa colisão (improvável em NF-e real)
+
+---
+
+v15.0.0 — Cópia em lote e correções
+
+Adicionado:
+- Botão por NF-e: "Copiar todos os códigos" (1 por linha)
+- Botão por NF-e: "Copiar código + nome" (1 por linha)
+- Botão por produto: "Copiar nome + (código)"
+- Botão global na toolbar: alternar separador decimal (vírgula ↔ ponto)
+
+Corrigido:
+- Upload múltiplo: só a primeira NF-e era carregada (FileList ficava stale após limpar input)
+- Highlight de linha: elemento copiado perdia destaque após re-render, mas a linha continuava destacada
+- Cópia em lote força remoção de quebras de linha nos nomes
+
+Interno:
+- Tracking de destaque agora persiste via data-field após re-renderizações
+
+---
+
 ## [14.0.0] — 22/11/2026
 
 ### Adicionado
