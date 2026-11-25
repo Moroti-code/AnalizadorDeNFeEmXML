@@ -6,7 +6,25 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 O versionamento segue [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
+v17.0.0 — Correções do modo Asana e botões globais
 
+Corrigido:
+- Botões de cópia do modo Asana (NF, Distribuidor, Ambos) não funcionavam
+  porque tinham classe .asana-copy-btn sem .copy-clickable nem .row-action.
+  Adicionado seletor no handler global.
+
+Adicionado:
+- Separador decimal próprio do modo Asana (padrão: ponto ".")
+  - Toggle inline no card Asana (botão "🔢 Ponto/Vírgula")
+  - Também disponível nas Configurações
+  - Aplicado ao valor da NF, lista de boletos e pill do título
+  - Separador global continua aplicando a Normal/PDC/Tributário
+- Botão "📅 Boletos (todas)" na toolbar — aplica modo Boletos em todas as NF-e
+- Botão "📋 Asana (todas)" na toolbar — aplica modo Asana em todas as NF-e
+  (ambos têm comportamento toggle: se todas já estão no modo, volta para Normal)
+
+---
+  
 v16.0.0 — Modo Asana, modo Boletos, vencimento no título e correções
 
 Adicionado:
